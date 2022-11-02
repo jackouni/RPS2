@@ -1,34 +1,34 @@
-const choices = ["rock", "paper", "scissors"] ;
-let compSelection = getCompChoice() ;
-let userInput = prompt('Choose --> Rock, Paper, or Scissors')
-let playerSelection = userInput.toLowerCase() ;
-let roundWinLossMsg = checkRoundWinner(playerSelection, compSelection)
+// Variables
+    const choices = ["rock", "paper", "scissors"] ;
+    const compSelection = getCompChoice() ;
+    //const userInput = prompt("Choose ---> Rock, Paper, or Scissors")
+    let playerSelection = prompt("Choose ---> Rock, Paper or Scissors").toLowerCase()
+    let roundWinLossMsg = checkRoundWinner(playerSelection, compSelection)
 
 
 
+// Functions
 
 function checkRoundWinner(playerSelection, compSelection) {
     // Evaluates who won/loss in a round
     if ((playerSelection === "rock" && compSelection === "scissors")
     || (playerSelection === "paper" && compSelection === "rock")
     || (playerSelection === "scissors" && compSelection === "paper")) {
-        return "You Won!"
+        return "YOU WON!"
     } else if ((playerSelection === "rock" && compSelection === "paper")
     || (playerSelection === "paper" && compSelection === "scissors")
     || (playerSelection === "scissors" && compSelection === "rock")) {
-        return "Computer Won."
+        return "COMPUTER WON."
     } else if  ((playerSelection === "rock" && compSelection === "rock")
     || (playerSelection === "paper" && compSelection === "paper")
     || (playerSelection === "scissors" && compSelection === "scissors")) {
-        return "Tied"
+        return "TIED"
     } 
 }
-
 function getCompChoice() {
     // Get's the computer's random choice of RPS
         return choices[Math.floor(Math.random() * choices.length)] 
 }
-
 function playRound(playerSelection, compSelection) {
     // Plays a single round of RPS 
     // 1) Asks prompt for userInput 
@@ -40,7 +40,6 @@ function playRound(playerSelection, compSelection) {
         ------------------------------------`)
    //  3) Shows scores 
 }
-
 function game() {
     /* This is where we will run a full game of RPS (5 rounds)
     1) Calls playRound function
