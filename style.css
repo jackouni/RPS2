@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    background-color: black;
+    justify-content: center;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: aliceblue;
+    font-family: monospace;
+    flex-wrap: nowrap ;
+
+}
+
+div h1 {
+    margin: 0px;
+    flex: 0;
+    flex-wrap: nowrap;
+}
+
+.the_game {
+    font-size: 62px;
+    font-weight: 800;
+    font-family: fantasy;
+    flex: 0;
+    flex-wrap: nowrap;
+}
