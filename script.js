@@ -1,8 +1,8 @@
 //const choices = ["rock", "paper", "scissors"] ;
 let compSelection = "paper" ;
 //let userInput = prompt('Choose --> Rock, Paper, or Scissors')
-let playerSelection = "scissors" ;
-
+let playerSelection = "paper" ;
+let roundWinLossMsg = checkRoundWinner(playerSelection, compSelection)
 
 
 
@@ -24,7 +24,6 @@ function checkRoundWinner(playerSelection, compSelection) {
     } 
 }
 
-
 function getCompChoice() {
     // Get's the computer's random choice of RPS
 }
@@ -32,14 +31,13 @@ function getCompChoice() {
 function playRound(playerSelection, compSelection) {
     // Plays a single round of RPS 
     // 1) Asks prompt for userInput 
-    // 2) Evaluates winner of round using checkRoundWinner() Function
-    // 3) Displays round #, player choice, comp choice, Winner/Loser message
+    // 2) Displays round #, player choice, comp choice, Winner/Loser message
         console.log(`Round: ROUND NUMBER \n
         You Chose: ${playerSelection} \n 
         Computer Chose: ${compSelection} \n
-        Winner: ${checkRoundWinner(playerSelection, compSelection)}\n
+        Winner: ${roundWinLossMsg}\n
         ------------------------------------`)
-   //  4) Shows scores 
+   //  3) Shows scores 
 }
 
 function game() {
