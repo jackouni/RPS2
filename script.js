@@ -1,7 +1,7 @@
-//const choices = ["rock", "paper", "scissors"] ;
-let compSelection = "paper" ;
-//let userInput = prompt('Choose --> Rock, Paper, or Scissors')
-let playerSelection = "paper" ;
+const choices = ["rock", "paper", "scissors"] ;
+let compSelection = getCompChoice() ;
+let userInput = prompt('Choose --> Rock, Paper, or Scissors')
+let playerSelection = userInput.toLowerCase() ;
 let roundWinLossMsg = checkRoundWinner(playerSelection, compSelection)
 
 
@@ -26,6 +26,7 @@ function checkRoundWinner(playerSelection, compSelection) {
 
 function getCompChoice() {
     // Get's the computer's random choice of RPS
+        return choices[Math.floor(Math.random() * choices.length)] 
 }
 
 function playRound(playerSelection, compSelection) {
