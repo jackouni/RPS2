@@ -1,9 +1,15 @@
 // Variables
-    const choices = ["rock", "paper", "scissors"] ;
+    const choices = ["ROCK", "PAPER", "SCISSORS"] ;
     const compSelection = getCompChoice() ;
-    //const userInput = prompt("Choose ---> Rock, Paper, or Scissors")
-    let playerSelection = prompt("Choose ---> Rock, Paper or Scissors").toLowerCase()
-    let roundWinLossMsg = checkRoundWinner(playerSelection, compSelection)
+    const playerSelection = getPlayerChoice().toUpperCase();
+    const roundWinLossMsg = checkRoundWinner(playerSelection, compSelection);
+
+
+    const playerScoreHolder = playerScore(playerSelection, compSelection) ; 
+    let x = 0
+    const compScoreHolder = compScore(playerSelection, compSelection) ;
+    let y = 0
+
 
 
 
@@ -11,43 +17,77 @@
 
 function checkRoundWinner(playerSelection, compSelection) {
     // Evaluates who won/loss in a round
-    if ((playerSelection === "rock" && compSelection === "scissors")
-    || (playerSelection === "paper" && compSelection === "rock")
-    || (playerSelection === "scissors" && compSelection === "paper")) {
+    if ((playerSelection === "ROCK" && compSelection === "SCISSORS")
+    || (playerSelection === "PAPER" && compSelection === "ROCK")
+    || (playerSelection === "SCISSORS" && compSelection === "PAPER")) {
         return "YOU WON!"
-    } else if ((playerSelection === "rock" && compSelection === "paper")
-    || (playerSelection === "paper" && compSelection === "scissors")
-    || (playerSelection === "scissors" && compSelection === "rock")) {
+    } else if ((playerSelection === "ROCK" && compSelection === "PAPER")
+    || (playerSelection === "PAPER" && compSelection === "SCISSORS")
+    || (playerSelection === "SCISSORS" && compSelection === "ROCK")) {
         return "COMPUTER WON."
-    } else if  ((playerSelection === "rock" && compSelection === "rock")
-    || (playerSelection === "paper" && compSelection === "paper")
-    || (playerSelection === "scissors" && compSelection === "scissors")) {
+    } else if  (playerSelection === compSelection){
         return "TIED"
     } 
+}
+function playerScore(playerSelection, compSelection) {
+    // Evaluates if player won or loss and adds score
+    if ((playerSelection === "ROCK" && compSelection === "SCISSORS")
+    || (playerSelection === "PAPER" && compSelection === "rock")
+    || (playerSelection === "SCISSORS" && compSelection === "PAPER")) {
+        return 1
+    } else if ((playerSelection === "ROCK" && compSelection === "PAPER")
+    || (playerSelection === "PAPER" && compSelection === "SCISSORS")
+    || (playerSelection === "SCISSORS" && compSelection === "ROCK")) {
+        return 0
+    } else if  (playerSelection === compSelection){
+        return 0
+    } 
+}
+function compScore(playerSelection, compSelection) {
+    // Evaluates if computer won/loss and adds to score
+    if ((playerSelection === "ROCK" && compSelection === "SCISSORS")
+    || (playerSelection === "PAPER" && compSelection === "ROCK")
+    || (playerSelection === "SCISSORS" && compSelection === "PAPER")) {
+        return 0
+    } else if ((playerSelection === "ROCK" && compSelection === "PAPER")
+    || (playerSelection === "PAPER" && compSelection === "SCISSORS")
+    || (playerSelection === "SCISSORS" && compSelection === "ROCK")) {
+        return 1
+    } else if (playerSelection === compSelection){
+        return 0
+    }
 }
 function getCompChoice() {
     // Get's the computer's random choice of RPS
         return choices[Math.floor(Math.random() * choices.length)] 
 }
-function playRound(playerSelection, compSelection) {
-    // Plays a single round of RPS 
-    // 1) Asks prompt for userInput 
-    // 2) Displays round #, player choice, comp choice, Winner/Loser message
-        console.log(`Round: ROUND NUMBER \n
-        You Chose: ${playerSelection} \n 
-        Computer Chose: ${compSelection} \n
-        Winner: ${roundWinLossMsg}\n
-        ------------------------------------`)
-   //  3) Shows scores 
+function getPlayerChoice() {
+    // Uses prompt() to get player's input.
+    return prompt("Choose---> Rock, Paper, or Scissors") ;
 }
-function game() {
-    /* This is where we will run a full game of RPS (5 rounds)
-    1) Calls playRound function
-    2) Plays 5 rounds (loops the playRound function 5 times
-    3) Declares the winner with message at the end of the 5 rounds */
-    
-}
+function roundOutcome(playerSelection, compSelection) {
+    // Displays the results of a round
 
-playRound(playerSelection, compSelection);
+        return `You Chose: ${playerSelection} \n 
+        Comp Chose: ${compSelection} \n
+        Winner: ${roundWinLossMsg}\n
+        Your Score: ${x += playerScoreHolder} \n
+        Comp Score: ${y += compScoreHolder} \n
+        ------------------------------------`
+    
+} 
+
+console.log(roundOutcome());
+
+
+
+
+
+
+
+
+
+
+
 
 
