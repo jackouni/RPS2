@@ -1,83 +1,74 @@
-// Variables
-    const choices = ["ROCK", "PAPER", "SCISSORS"] ;
-    const compSelection = getCompChoice() ;
-    const playerSelection = getPlayerChoice().toUpperCase();
-    const roundWinLossMsg = checkRoundWinner(playerSelection, compSelection);
-
-
-    const playerScoreHolder = playerScore(playerSelection, compSelection) ; 
-    let x = 0
-    const compScoreHolder = compScore(playerSelection, compSelection) ;
-    let y = 0
-
-
-
-
-// Functions
-
-function checkRoundWinner(playerSelection, compSelection) {
-    // Evaluates who won/loss in a round
-    if ((playerSelection === "ROCK" && compSelection === "SCISSORS")
-    || (playerSelection === "PAPER" && compSelection === "ROCK")
-    || (playerSelection === "SCISSORS" && compSelection === "PAPER")) {
-        return "YOU WON!"
-    } else if ((playerSelection === "ROCK" && compSelection === "PAPER")
-    || (playerSelection === "PAPER" && compSelection === "SCISSORS")
-    || (playerSelection === "SCISSORS" && compSelection === "ROCK")) {
-        return "COMPUTER WON."
-    } else if  (playerSelection === compSelection){
-        return "TIED"
-    } 
+const options = ["ROCK", "PAPER", "SCISSORS"]
+function getCompChoice(){
+    const choice = options[Math.floor(Math.random() * options.length)] ;
+    return choice ;
 }
-function playerScore(playerSelection, compSelection) {
-    // Evaluates if player won or loss and adds score
-    if ((playerSelection === "ROCK" && compSelection === "SCISSORS")
-    || (playerSelection === "PAPER" && compSelection === "rock")
-    || (playerSelection === "SCISSORS" && compSelection === "PAPER")) {
-        return 1
-    } else if ((playerSelection === "ROCK" && compSelection === "PAPER")
-    || (playerSelection === "PAPER" && compSelection === "SCISSORS")
-    || (playerSelection === "SCISSORS" && compSelection === "ROCK")) {
-        return 0
-    } else if  (playerSelection === compSelection){
-        return 0
-    } 
+function getPlayerChoice(){
+    let InputValidated = false ;
+    while(InputValidated == false){
+        const choice = prompt("Choose ---> ROCK, PAPER, SCISSORS");
+        if (choice == null){
+            continue;
+        } 
+        const choiceInUpperCase = choice.toUpperCase();
+        if (options.includes(choiceInUpperCase)){
+            InputValidated = true;
+            return choiceInUpperCase;
+        }
+    }
+
 }
-function compScore(playerSelection, compSelection) {
-    // Evaluates if computer won/loss and adds to score
-    if ((playerSelection === "ROCK" && compSelection === "SCISSORS")
-    || (playerSelection === "PAPER" && compSelection === "ROCK")
-    || (playerSelection === "SCISSORS" && compSelection === "PAPER")) {
-        return 0
-    } else if ((playerSelection === "ROCK" && compSelection === "PAPER")
-    || (playerSelection === "PAPER" && compSelection === "SCISSORS")
-    || (playerSelection === "SCISSORS" && compSelection === "ROCK")) {
-        return 1
-    } else if (playerSelection === compSelection){
-        return 0
+function checkRoundWinner(playerSelection, compSelection){
+    if (playerSelection === compSelection) {
+        return "TIE"
+    } else if ((playerSelection === "ROCK" && compSelection == "SCISSORS")
+    || (playerSelection == "PAPER" && compSelection == "ROCK")
+    || (playerSelection == "SCISSORS" && compSelection == "PAPER")) {
+        return "PLAYER"
+    } else {
+        return "COMP" 
     }
 }
-function getCompChoice() {
-    // Get's the computer's random choice of RPS
-        return choices[Math.floor(Math.random() * choices.length)] 
+function playRound(playerSelection, compSelection){
+    const result = checkRoundWinner(playerSelection, compSelection);
+    if (result == "PLAYER") {
+        return `You won! Your ${playerSelection} beats the computer's ${compSelection}!`
+    } else if (result == "TIE") {
+        return "You tied with the computer"
+    } else {
+        return `You lost. The computer's ${compSelection} beats your ${playerSelection}!`
+    }
 }
-function getPlayerChoice() {
-    // Uses prompt() to get player's input.
-    return prompt("Choose---> Rock, Paper, or Scissors") ;
+function game(){
+    console.log("Welcome to Rock Paper Scissors")
+    let roundCount = 0;
+    let playerScore = 0;
+    let compScore = 0;
+    while(roundCount < 5) {
+        const playerSelection = getPlayerChoice();
+        const compSelection = getCompChoice();
+        console.log(playRound(playerSelection, compSelection));
+        console.log("-----------------")
+        if (checkRoundWinner(playerSelection, compSelection) == "PLAYER"){
+            playerScore++; 
+            roundCount++
+        } else if (checkRoundWinner(playerSelection, compSelection) == "COMP"){
+            compScore++; 
+            roundCount++;
+        } 
+    }
+    if (playerScore > compScore){
+        console.log(`You won the game with a score of ${playerScore} to ${compScore}`)
+    } else if (playerScore < compScore){
+        console.log(`You lost the game with a score of ${compScore} to ${playerScore}`)
+    }
 }
-function roundOutcome(playerSelection, compSelection) {
-    // Displays the results of a round
 
-        return `You Chose: ${playerSelection} \n 
-        Comp Chose: ${compSelection} \n
-        Winner: ${roundWinLossMsg}\n
-        Your Score: ${x += playerScoreHolder} \n
-        Comp Score: ${y += compScoreHolder} \n
-        ------------------------------------`
-    
-} 
+game();
 
-console.log(roundOutcome());
+const playerSelection = getPlayerChoice();
+const compSelection = getCompChoice();
+
 
 
 
