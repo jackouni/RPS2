@@ -1,4 +1,5 @@
 const options = ["ROCK", "PAPER", "SCISSORS"]
+
 function getCompChoice(){
     const choice = options[Math.floor(Math.random() * options.length)] ;
     return choice ;
@@ -45,8 +46,8 @@ function game(){
     let playerScore = 0;
     let compScore = 0;
     while(roundCount < 5) {
-        const playerSelection = getPlayerChoice();
-        const compSelection = getCompChoice();
+        /*const playerSelection = getPlayerChoice();
+        const compSelection = getCompChoice();*/
         console.log(playRound(playerSelection, compSelection));
         console.log("-----------------")
         if (checkRoundWinner(playerSelection, compSelection) == "PLAYER"){
