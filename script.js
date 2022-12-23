@@ -1,5 +1,5 @@
 /*◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎
-◼︎◼︎◼︎ Element Selections ◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎ */
+◼︎◼︎◼︎ Element Selections & Variables ◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎ */
 
 const heading = document.querySelector('#heading')
 const playerCounter = document.querySelector('#player-counter')
@@ -11,34 +11,45 @@ const gameDisplay = document.querySelector('#game-display')
 const rockIcon = document.querySelector('#rock')
 const paperIcon = document.querySelector('#paper')
 const scissorsIcon = document.querySelector('#scissors')
+const allOptions = document.querySelectorAll('.selection')
+console.log(allOptions)
 
-console.log(compCounter)
-
-    
 
 const options = ["ROCK", "PAPER", "SCISSORS"]
+const playerSelection = getPlayerChoice();
+const compSelection = getCompChoice();
 
-/*
-function getCompChoice(){
+/*◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎
+◼︎◼︎◼︎ Event Handlings ◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎ */
+
+allOptions.forEach((option) => { // for each option we add a 'click' listener
+    option.addEventListener('click', () => playRound());
+  });
+
+
+/*◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎
+◼︎◼︎◼︎ Functions ◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎ */
+
+function getCompChoice(){ // Gets the comp player's random selection of RPS
     const choice = options[Math.floor(Math.random() * options.length)] ;
     return choice ;
 }
-function getPlayerChoice(){
-    let InputValidated = false ;
-    while(InputValidated == false){
-        const choice = prompt("Choose ---> ROCK, PAPER, SCISSORS");
-        if (choice == null){
+function getPlayerChoice(){ // Gets user's input of RPS 
+    let InputValidated = false ; 
+    while(InputValidated == false){ // Asks user for input 
+        // const choice = prompt("Choose ---> ROCK, PAPER, SCISSORS");
+        if (choice == null){ 
             continue;
-        } 
-        const choiceInUpperCase = choice.toUpperCase();
-        if (options.includes(choiceInUpperCase)){
-            InputValidated = true;
+        }
+        const choiceInUpperCase = choice.toUpperCase(); // User Input is cap-insensitive
+        if (options.includes(choiceInUpperCase)){ 
+            InputValidated = true; 
             return choiceInUpperCase;
         }
     }
 
 }
-function checkRoundWinner(playerSelection, compSelection){
+function checkRoundWinner(playerSelection, compSelection){ // Checks to see who won a round
     if (playerSelection === compSelection) {
         return "TIE"
     } else if ((playerSelection === "ROCK" && compSelection == "SCISSORS")
@@ -49,7 +60,8 @@ function checkRoundWinner(playerSelection, compSelection){
         return "COMP" 
     }
 }
-function playRound(playerSelection, compSelection){
+function playRound(playerSelection, compSelection){ // Plays a round of RPS and evaluates winner
+    console.log('playRound activated')
     const result = checkRoundWinner(playerSelection, compSelection);
     if (result == "PLAYER") {
         return `You won! Your ${playerSelection} beats the computer's ${compSelection}!`
@@ -60,9 +72,9 @@ function playRound(playerSelection, compSelection){
     }
 }
 function game(){
-    console.log("Welcome to Rock Paper Scissors")
+  /*  console.log("Welcome to Rock Paper Scissors")
     console.log("Choose ---> Rock, Paper, or Scissors")
-    console.log("Best 3 of 5")
+    console.log("Best 3 of 5") */
     let roundCount = 0;
     let playerScore = 0;
     let compScore = 0;
@@ -86,8 +98,3 @@ function game(){
     }
 } 
 
-game(); 
-
-const playerSelection = getPlayerChoice();
-const compSelection = getCompChoice();
-*/
