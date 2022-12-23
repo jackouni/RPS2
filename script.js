@@ -1,5 +1,24 @@
+/*◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎
+◼︎◼︎◼︎ Element Selections ◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎◼︎ */
+
+const heading = document.querySelector('#heading')
+const playerCounter = document.querySelector('#player-counter')
+const compCounter = document.querySelector('#comp-counter')
+const title = document.querySelector('#title')
+
+const gameDisplay = document.querySelector('#game-display')
+
+const rockIcon = document.querySelector('#rock')
+const paperIcon = document.querySelector('#paper')
+const scissorsIcon = document.querySelector('#scissors')
+
+console.log(compCounter)
+
+    
+
 const options = ["ROCK", "PAPER", "SCISSORS"]
 
+/*
 function getCompChoice(){
     const choice = options[Math.floor(Math.random() * options.length)] ;
     return choice ;
@@ -42,12 +61,14 @@ function playRound(playerSelection, compSelection){
 }
 function game(){
     console.log("Welcome to Rock Paper Scissors")
+    console.log("Choose ---> Rock, Paper, or Scissors")
+    console.log("Best 3 of 5")
     let roundCount = 0;
     let playerScore = 0;
     let compScore = 0;
     while(roundCount < 5) {
-        /*const playerSelection = getPlayerChoice();
-        const compSelection = getCompChoice();*/
+        const playerSelection = getPlayerChoice();
+        const compSelection = getCompChoice();
         console.log(playRound(playerSelection, compSelection));
         console.log("-----------------")
         if (checkRoundWinner(playerSelection, compSelection) == "PLAYER"){
@@ -63,23 +84,10 @@ function game(){
     } else if (playerScore < compScore){
         console.log(`You lost the game with a score of ${compScore} to ${playerScore}`)
     }
-}
+} 
 
-game();
+game(); 
 
 const playerSelection = getPlayerChoice();
 const compSelection = getCompChoice();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
